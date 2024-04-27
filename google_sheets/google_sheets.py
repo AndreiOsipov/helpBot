@@ -2,8 +2,9 @@ from googleapiclient.discovery import build
 from google.oauth2.service_account import Credentials
 import re
 import datetime
+import json
 from dataclasses import dataclass
-from bot_paths.paths import GOOGLE_API_CREDS_PATH 
+from bot_paths.paths import GOOGLE_API_CREDS_PATH, SPREADSHEET_ID_PATH
 
 
 @dataclass
@@ -18,11 +19,16 @@ class ClientsGoogleSheetsGetter:
 
 
     def __init__(self) -> None:
-        self.spreadsheet_id = "1MO9xtqu7DspSwyM8-tw_KxKLLANsP3ypJjgLOQtB7k0"
+        self.spreadsheet_id = self.get_spreadsheet_id()
         # self.responsible_user = responsible_user
         self.service = self.get_service()
         self.clients_range = "A1:V"
-      
+
+    def get_spreadsheet_id(self) -> str:
+        with open(SPREADSHEET_ID_PATH) as spreadsheet_id_file:
+            spreadsheet = json.load(spreadsheet_id_file)
+            return  spreadsheet["spreadsheet_id"]
+
     def get_service(self):
         credentials = Credentials.from_service_account_file(GOOGLE_API_CREDS_PATH)
         return build('sheets', 'v4', credentials=credentials)

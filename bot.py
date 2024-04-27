@@ -34,7 +34,7 @@ user_chose_buttons = [
     [InlineKeyboardButton("Loqi", callback_data=UsersCallbacks.loqi.value)],
     [InlineKeyboardButton("Андрей Осипов", callback_data=UsersCallbacks.andrei.value)],
     [InlineKeyboardButton("Артем", callback_data=UsersCallbacks.artem.value)],
-    [InlineKeyboardButton("Алексей", callback_data=UsersCallbacks.sergei.value)],
+    [InlineKeyboardButton("Сергей", callback_data=UsersCallbacks.sergei.value)],
     [InlineKeyboardButton("Все", callback_data=UsersCallbacks.everybody.value)],
 ]
 
