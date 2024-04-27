@@ -129,6 +129,3 @@ class MainMenuEndPoint(UpdateRecipientEndpoint):
             message = await update.message.reply_text(self.text, reply_markup=InlineKeyboardMarkup(self.buttons))
             context.user_data[BotsDataKeys.last_bots_message_id.value] = message.message_id
             return self.change_state(context)
-            # return self.conversation_state
-            
-    
